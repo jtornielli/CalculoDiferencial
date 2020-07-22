@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon (1).ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Costo por diferencia de Peso</title>
+</head>
+<body>
+    <h1>Costo por diferencia de peso</h1>
+    <div class="main-container">
+        Numero de orden : <input type="text" id="txtNumeroOrden">
+        Peso abonado por el cliente(kg) : <input type="text" id="txtPayByClient">
+        Peso real del producto(kg) : <input type="text" id="txtRealW"><br>
+        <select name="countrySelector" id="slcCountrySelector">
+            <option value="x">Seleccione un pais</option>
+            <option value="ar">Argentina</option>
+            <option value="br">Brasil</option>
+            <option value="pe">Peru</option>
+            <option value="ur">Uruguay</option>
+        </select>
+        <input type="button" value="Calcular" id="btnCalculateWhDifference">
+        <p id="pMensajes"></p>
+    </div>
+    <script src="jquery-3.4.1.slim.min.js"></script>
+    <script src="js.js"></script>
+</body>
+</html>
