@@ -27,7 +27,7 @@ class Pais{
 }
 
 }
-alert();
+
 // Crear objetos Pais y agregarlos al listado listaPaises;
 
 let Uruguay = new Pais();
