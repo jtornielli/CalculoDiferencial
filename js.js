@@ -69,7 +69,7 @@ function calcularPrecioAbonadoPorCliente(pesoAbonadoCliente,paisSeleccionado){
             precioKilo =  Math.round(pesoAbonadoCliente * Uruguay.precioFranja1);
         }
         if(pesoAbonadoCliente > 3.01 && pesoAbonadoCliente <= 5){
-            precioKilo = Math.round(Uruguay.precioFranja1 * 3 +   pesoAbonadoCliente * Uruguay.precioFranja2);
+            precioKilo = Math.round(Uruguay.precioFranja1 * 3 +   (pesoAbonadoCliente - 3) * Uruguay.precioFranja2);
         }
         if(pesoAbonadoCliente > 5.01){
             precioKilo = Math.round(Uruguay.precioFranja1 * 3 + Uruguay.precioFranja2 * 2 + (pesoAbonadoCliente - 5) * Uruguay.precioFranja3);
