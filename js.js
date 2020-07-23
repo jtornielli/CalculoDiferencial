@@ -4,7 +4,7 @@ Arg:
 -18.20
 -12.99
 Ur:
--22.90
+-20.99
 -16.03
 -11.45
 weight
@@ -32,9 +32,9 @@ class Pais{
 
 let Uruguay = new Pais();
 Uruguay.idPaisSeleccionado =  "ur";
-Uruguay.precioFranja1 = 22.90;
-Uruguay.precioFranja2 = 16.03;
-Uruguay.precioFranja3 = 11.45;
+Uruguay.precioFranja1 = 20.99;
+Uruguay.precioFranja2 = 14.69;
+Uruguay.precioFranja3 = 10.50;
 
 
 let Argentina = new Pais();
