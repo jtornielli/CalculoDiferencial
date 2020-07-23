@@ -8,6 +8,14 @@ Ur:
 -16.03
 -11.45
 weight
+Br:
+-21.99
+-15.40
+-10.99
+Pe:
+-20.99
+-14.69
+-10.50
 */
 
 class Pais{
@@ -20,8 +28,6 @@ class Pais{
 
 }
 
-let listaPaises = [];
-
 // Crear objetos Pais y agregarlos al listado listaPaises;
 
 let Uruguay = new Pais();
@@ -29,15 +35,19 @@ Uruguay.idPaisSeleccionado =  "ur";
 Uruguay.precioFranja1 = 22.90;
 Uruguay.precioFranja2 = 16.03;
 Uruguay.precioFranja3 = 11.45;
-listaPaises.push(Uruguay);
+
 
 let Argentina = new Pais();
 Argentina.idPaisSeleccionado =  "ar";
 Argentina.precioFranja1 = 25.99;
 Argentina.precioFranja2 = 18.20;
 Argentina.precioFranja3 = 12.99;
-listaPaises.push(Argentina);
 
+let Brasil = new Pais();
+Brasil.paisSeleccionado = "br";
+Brasil.precioFranja1 = 21.99;
+Brasil.precioFranja2 = 15.40;
+Brasil.precioFranja3 = 10.99;
 
 function calcularPrecioAbonadoPorCliente(pesoAbonadoCliente,paisSeleccionado){
     let precioKilo;
@@ -47,10 +57,10 @@ function calcularPrecioAbonadoPorCliente(pesoAbonadoCliente,paisSeleccionado){
         if(pesoAbonadoCliente > 0 && pesoAbonadoCliente <= 3){
             precioKilo =  Math.round(pesoAbonadoCliente * Argentina.precioFranja1);
         }
-        if(pesoAbonadoCliente > 3.1 && pesoAbonadoCliente <= 5){
-            precioKilo = Math.round(Argentina.precioFranja1 * 3 +  pesoAbonadoCliente * Argentina.precioFranja2);
+        if(pesoAbonadoCliente >= 3.01 && pesoAbonadoCliente <= 5){
+            precioKilo = Math.round(Argentina.precioFranja1 * 3 +  (pesoAbonadoCliente - 3) * Argentina.precioFranja2);
         }
-        if(pesoAbonadoCliente > 5.1){
+        if(pesoAbonadoCliente > 5.01){
             precioKilo = Math.round(Argentina.precioFranja1 * 3 + Argentina.precioFranja2 * 2 + pesoAbonadoCliente * Argentina.precioFranja3);
         }
     }
@@ -58,11 +68,11 @@ function calcularPrecioAbonadoPorCliente(pesoAbonadoCliente,paisSeleccionado){
         if(pesoAbonadoCliente > 0 && pesoAbonadoCliente <= 3){
             precioKilo =  Math.round(pesoAbonadoCliente * Uruguay.precioFranja1);
         }
-        if(pesoAbonadoCliente > 3.1 && pesoAbonadoCliente <= 5){
+        if(pesoAbonadoCliente > 3.01 && pesoAbonadoCliente <= 5){
             precioKilo = Math.round(Uruguay.precioFranja1 * 3 +   pesoAbonadoCliente * Uruguay.precioFranja2);
         }
-        if(pesoAbonadoCliente > 5.1){
-            precioKilo = Math.round(Uruguay.precioFranja1 * 3 + Uruguay.precioFranja2 * 2 + pesoAbonadoCliente * Uruguay.precioFranja3);
+        if(pesoAbonadoCliente > 5.01){
+            precioKilo = Math.round(Uruguay.precioFranja1 * 3 + Uruguay.precioFranja2 * 2 + (pesoAbonadoCliente - 5) * Uruguay.precioFranja3);
         }
     }
 
@@ -71,16 +81,17 @@ function calcularPrecioAbonadoPorCliente(pesoAbonadoCliente,paisSeleccionado){
 
 function calcularPrecioRealDelProducto(pesoRealProducto,paisSeleccionado){
     let precioKilo;
+    pesoAbonadoCliente = Number($("#txtPayByClient").val());
     pesoRealProducto = Number($("#txtRealW").val());
     paisSeleccionado = $("#slcCountrySelector").val();
     if(paisSeleccionado === "ar"){
         if(pesoRealProducto > 0 && pesoRealProducto <= 3){
             precioKilo =  Math.round(pesoRealProducto * Argentina.precioFranja1);
         }
-        if(pesoRealProducto > 3.1 && pesoRealProducto <= 5){
+        if(pesoRealProducto > 3.01 && pesoRealProducto <= 5){
             precioKilo = Math.round(Argentina.precioFranja1 * 3 +  (pesoRealProducto - 3) * Argentina.precioFranja2);
         }
-        if(pesoRealProducto > 5.1){
+        if(pesoRealProducto > 5.01){
             precioKilo = Math.round(Argentina.precioFranja1 * 3 + Argentina.precioFranja2 * 2 + (pesoRealProducto - 5) * Argentina.precioFranja3);
         }
     }
@@ -88,10 +99,10 @@ function calcularPrecioRealDelProducto(pesoRealProducto,paisSeleccionado){
         if(pesoRealProducto > 0 && pesoRealProducto <= 3){
             precioKilo =  Math.round(pesoRealProducto * Uruguay.precioFranja1);
         }
-        if(pesoRealProducto > 3.1 && pesoRealProducto <= 5){
-            precioKilo = Math.round(Uruguay.precioFranja1 * 3 +   (pesoRealProducto - 3) * Uruguay.precioFranja2);
+        if(pesoRealProducto > 3.01 && pesoRealProducto <= 5){
+            precioKilo = Math.round((Uruguay.precioFranja1 * 3) +  (pesoRealProducto - 3) * Uruguay.precioFranja2);
         }
-        if(pesoRealProducto > 5.1){
+        if(pesoRealProducto > 5.01){
             precioKilo = Math.round(Uruguay.precioFranja1 * 3 + Uruguay.precioFranja2 * 2 + (pesoRealProducto - 5) * Uruguay.precioFranja3);
         }
     }
@@ -109,8 +120,8 @@ function calculoFinal(){
     let tempAbonadoClente = calcularPrecioAbonadoPorCliente(a,b);
     let tempPesoReal = calcularPrecioRealDelProducto(c,b);
     let tempFinal;
-    console.log(tempAbonadoClente);
-    console.log(tempPesoReal);
+    console.log("abonado cliente : " + tempAbonadoClente);
+    console.log("peso real : " + tempPesoReal);
     tempFinal = tempPesoReal - tempAbonadoClente;
     $("#pMensajes").html(`<h3>Cliente debe abonar: </h3> ${tempFinal} USD<br>
     <h3>Link de pago : </h3>
