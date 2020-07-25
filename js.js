@@ -67,7 +67,7 @@ function calcularPrecio(abonadoPorCliente) {
     if (pesoAbonadoCliente > 0 && pesoAbonadoCliente <= 3) {
         precioKilo = Math.round(peso * obtenerFranja(1));
     }
-    if (pesoAbonadoCliente >= 3.01 && peso <= 5) {
+    if (pesoAbonadoCliente >= 3.01 && pesoAbonadoCliente <= 5) {
         precioKilo = Math.round(obtenerFranja(1) * 3 + (peso - 3) * obtenerFranja(2));
     }
     if (pesoAbonadoCliente > 5.01) {
